@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class DataInitializer {
-
+    // until we setup jwt auth 
     // Ensures we have a default user to attach transactions to
     @Bean
     CommandLineRunner initDatabase(UserRepository repository) {

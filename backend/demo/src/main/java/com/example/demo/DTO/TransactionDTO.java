@@ -4,17 +4,16 @@ import com.example.demo.Entities.Categorytypes;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-// This class represents the exact form data from your UI
+// This class represents the exact form data from  UI
 // [Name] [Type] [Amount] [Add Button]
 public class TransactionDTO {
     private Long userId;
-    private String categoryName; // "Food"
-    private Categorytypes type; // EXPENSE
-    private BigDecimal amount; // 50.00
-    private String description; // "Groceries at Walmart"
+    private String categoryName;
+    private Categorytypes type;
+    private BigDecimal amount;
+    private String description;
     private LocalDate date;
 
-    // Getters and Setters
     public Long getUserId() {
         return userId;
     }
