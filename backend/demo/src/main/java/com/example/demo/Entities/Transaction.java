@@ -22,11 +22,13 @@ public class Transaction {
     private Categories category;
 
     private BigDecimal amount;
-    private String type;
+
+    @Enumerated(EnumType.STRING)
+    private Categorytypes type;
     private String description;
     private LocalDate transactionDate;
 
-    public Transaction(User user, Categories category, BigDecimal amount, String type, String description, LocalDate transactionDate) {
+    public Transaction(User user, Categories category, BigDecimal amount, Categorytypes type, String description, LocalDate transactionDate) {
         this.user = user;
         this.category = category;
         this.amount = amount;
@@ -34,7 +36,7 @@ public class Transaction {
         this.description = description;
         this.transactionDate = transactionDate;
     }
-    
+    public Transaction(){}
     public Long getId() {
         return id;
     }
@@ -67,11 +69,11 @@ public class Transaction {
         this.amount = amount;
     }
     
-    public String getType() {
+    public Categorytypes getType() {
         return type;
     }
     
-    public void setType(String type) {
+    public void setType(Categorytypes type) {
         this.type = type;
     }
     

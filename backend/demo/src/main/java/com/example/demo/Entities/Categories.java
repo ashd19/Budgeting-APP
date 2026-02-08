@@ -2,6 +2,8 @@ package com.example.demo.Entities;
 import com.example.demo.Entities.User;
 import jakarta.persistence.*;
 
+import static jakarta.persistence.EnumType.STRING;
+
 @Entity
 @Table(name = "Category_Table")
 public class Categories {
@@ -15,11 +17,13 @@ public class Categories {
     private User user;
 
     private String name;
-    private String type; // INCOME , EXPENSE , SAVINGS 
+
+    @Enumerated(STRING)
+    private Categorytypes type;
     
     
-    
-    public Categories(User user, String name, String type) {
+    public Categories(){}
+    public Categories(User user, String name, Categorytypes type) {
         this.user = user;
         this.name = name;
         this.type = type;
@@ -49,14 +53,12 @@ public class Categories {
         this.name = name;
     }
     
-    public String getType() {
+    public Categorytypes getType() {
         return type;
     }
-    
-    public void setType(String type) {
+
+    public void setType(Categorytypes type) {
         this.type = type;
     }
-    
-    
-    
+
 }

@@ -25,7 +25,7 @@ public class User {
    @Column(name = "updatedAt")
    private LocalDateTime updatedAt;
    
- 
+  public User(){}
 
    public User(String name, String email, String passwordHash) {
     this.name = name;
