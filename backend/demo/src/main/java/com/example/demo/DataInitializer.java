@@ -1,0 +1,22 @@
+package com.example.demo;
+
+import com.example.demo.Entities.User;
+import com.example.demo.Repository.UserRepository;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class DataInitializer {
+
+    // Ensures we have a default user to attach transactions to
+    @Bean
+    CommandLineRunner initDatabase(UserRepository repository) {
+        return args -> {
+            if (repository.count() == 0) {
+                repository.save(new User("Demo User", "demo@example.com", "hashedpassword"));
+                System.out.println("Default user created!");
+            }
+        };
+    }
+}
