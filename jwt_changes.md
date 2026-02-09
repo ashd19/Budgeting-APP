@@ -533,7 +533,7 @@ The test script doesn't validate HTTP response codes before proceeding, which co
 **Recommendation**:
 Add status code checks:
 ```bash
-STATUS_CODE=$(echo "$SIGNUP_Response" | grep -o '"status":[0-9]*' | grep -o '[0-9]*')
+STATUS_CODE=$(echo "$SIGNUP_RESPONSE" | grep -o '"status":[0-9]*' | grep -o '[0-9]*')
 if [ "$STATUS_CODE" -ne 200 ]; then
     echo -e "${RED}Signup failed with status $STATUS_CODE${NC}"
     exit 1
