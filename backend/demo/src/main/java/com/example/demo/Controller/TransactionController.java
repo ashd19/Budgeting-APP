@@ -17,10 +17,16 @@ public class TransactionController {
 
     @PostMapping
     public ResponseEntity<Transaction> addTransaction(@RequestBody TransactionDTO transactionDTO) {
-        // Hardcoding/Ensuring userId is present if not passed (for demo purposes)
-        if (transactionDTO.getUserId() == null) {
-            transactionDTO.setUserId(1L); // Default user
-        }
+        // Get authenticated user
+        org.springframework.security.core.Authentication authentication = org.springframework.security.core.context.SecurityContextHolder
+                .getContext().getAuthentication();
+        com.example.demo.Entities.User currentUser = (com.example.demo.Entities.User) authentication.getPrincipal(); // Cast
+                                                                                                                     // to
+                                                                                                                     // our
+                                                                                                                     // User
+                                                                                                                     // entity
+
+        transactionDTO.setUserId(currentUser.getId());
 
         Transaction newTransaction = transactionService.addTransaction(transactionDTO);
         return ResponseEntity.ok(newTransaction);

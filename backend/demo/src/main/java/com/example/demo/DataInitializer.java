@@ -8,14 +8,15 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class DataInitializer {
-    // until we setup jwt auth 
+    // until we setup jwt auth
     // Ensures we have a default user to attach transactions to
     @Bean
-    CommandLineRunner initDatabase(UserRepository repository) {
+    CommandLineRunner initDatabase(UserRepository repository,
+            org.springframework.security.crypto.password.PasswordEncoder passwordEncoder) {
         return args -> {
             if (repository.count() == 0) {
-                repository.save(new User("Demo User", "demo@example.com", "hashedpassword"));
-                System.out.println("Default user created!");
+                repository.save(new User("Demo User", "demo@example.com", passwordEncoder.encode("password")));
+                System.out.println("Default user created! Login with email: demo@example.com, password: password");
             }
         };
     }

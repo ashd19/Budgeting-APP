@@ -1,12 +1,12 @@
 package com.example.demo.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.time.LocalDateTime;
 import jakarta.persistence.*;
 
-
 @Entity
 @Table(name = "User_Table")
-public class User {
+public class User implements org.springframework.security.core.userdetails.UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,75 +15,110 @@ public class User {
 
     @Column(name = "name")
     private String name;
-    
-   @Column(name = "email")
-   private String email;
-   @Column(name = "passwordHash")
-   private String passwordHash;
-   @Column(name = "createdAt")
-   private LocalDateTime createdAt;
-   @Column(name = "updatedAt")
-   private LocalDateTime updatedAt;
-   
-  public User(){}
 
-   public User(String name, String email, String passwordHash) {
-    this.name = name;
-    this.email = email;
-    this.passwordHash = passwordHash;
-    this.createdAt = LocalDateTime.now();
-    this.updatedAt = LocalDateTime.now();
-   }
+    @Column(name = "email")
+    private String email;
+    @Column(name = "passwordHash")
+    @JsonIgnore
+    private String passwordHash;
+    @Column(name = "createdAt")
+    private LocalDateTime createdAt;
+    @Column(name = "updatedAt")
+    private LocalDateTime updatedAt;
 
-   public Long getId() {
-    return id;
-   }
+    public User() {
+    }
 
-   public void setId(Long id) {
-    this.id = id;
-   }
+    public User(String name, String email, String passwordHash) {
+        this.name = name;
+        this.email = email;
+        this.passwordHash = passwordHash;
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
+    }
 
-   public String getName() {
-    return name;
-   }
+    public Long getId() {
+        return id;
+    }
 
-   public void setName(String name) {
-    this.name = name;
-   }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-   public String getEmail() {
-    return email;
-   }
+    public String getName() {
+        return name;
+    }
 
-   public void setEmail(String email) {
-    this.email = email;
-   }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-   public String getPasswordHash() {
-    return passwordHash;
-   }
+    public String getEmail() {
+        return email;
+    }
 
-   public void setPasswordHash(String passwordHash) {
-    this.passwordHash = passwordHash;
-   }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-   public LocalDateTime getCreatedAt() {
-    return createdAt;
-   }
+    public String getPasswordHash() {
+        return passwordHash;
+    }
 
-   public void setCreatedAt(LocalDateTime createdAt) {
-    this.createdAt = createdAt;
-   }
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
+    }
 
-   public LocalDateTime getUpdatedAt() {
-    return updatedAt;
-   }
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
 
-   public void setUpdatedAt(LocalDateTime updatedAt) {
-    this.updatedAt = updatedAt;
-   }
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
 
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
 
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 
-    
+    @Override
+    public java.util.Collection<? extends org.springframework.security.core.GrantedAuthority> getAuthorities() {
+        return java.util.List.of(new org.springframework.security.core.authority.SimpleGrantedAuthority("ROLE_USER"));
+    }
+
+    @Override
+    @JsonIgnore
+    public String getPassword() {
+        return passwordHash;
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
 }

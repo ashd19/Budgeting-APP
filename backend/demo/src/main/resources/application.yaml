@@ -15,5 +15,7 @@ spring:
       hibernate:
         default_schema: public
 
-
-
+security:
+  jwt:
+    secret-key: 07a23b4ba1cd474381e894e7ffcbb56607a23b4ba1cd474381e894e7ffcbb566 # 64 bytes
+    expiration-time: 3600000 # 1 hour

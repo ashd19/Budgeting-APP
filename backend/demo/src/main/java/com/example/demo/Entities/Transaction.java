@@ -20,7 +20,7 @@ public class Transaction {
 
     @ManyToOne
     @JoinColumn(name = "category_id")
-    private Category category; // bruh theres already a category table
+    private Category category; // bruh theres already a category table , but here we are referencing it from category
 
     private BigDecimal amount;
 
