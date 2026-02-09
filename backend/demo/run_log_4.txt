@@ -74,3 +74,8 @@
 2026-02-09T19:58:54.305+05:30  INFO 36062 --- [BudgetingApp] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2026-02-09T19:58:54.305+05:30  INFO 36062 --- [BudgetingApp] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2026-02-09T19:58:54.307+05:30  INFO 36062 --- [BudgetingApp] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-02-09T19:59:58.414+05:30  INFO 36062 --- [BudgetingApp] [ionShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-02-09T19:59:58.423+05:30  INFO 36062 --- [BudgetingApp] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-02-09T19:59:58.451+05:30  INFO 36062 --- [BudgetingApp] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-09T19:59:58.461+05:30  INFO 36062 --- [BudgetingApp] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-02-09T19:59:58.508+05:30  INFO 36062 --- [BudgetingApp] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
