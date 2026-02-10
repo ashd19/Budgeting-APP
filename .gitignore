@@ -1,0 +1,11 @@
+resume.md
+node_modules/
+.next/
+target/
+.DS_Store
+*.pem
+.env
+.env.local
+.idea/
+.vscode/
+docs

@@ -10,6 +10,7 @@ import com.example.demo.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -55,5 +56,18 @@ public class TransactionService {
                 dto.getDate());
 
         return transactionRepository.save(transaction);
+    }
+
+    // Get all transactions for a specific user
+    public List<Transaction> getTransactionsByUserId(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        return transactionRepository.findByUser(user);
+    }
+
+    // Get a specific transaction by ID
+    public Transaction getTransactionById(Long id) {
+        return transactionRepository.findById(id)
+                .orElse(null);
     }
 }

@@ -1,12 +1,14 @@
+server:
+  port: ${PORT:8080}
+
 spring:
   application:
     name: BudgetingApp
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/mydb
-    username: postgres
-    password: postgres
-    schema: public
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/mydb}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
   jpa:
     hibernate:
       ddl-auto: update
@@ -17,5 +19,20 @@ spring:
 
 security:
   jwt:
-    secret-key: 07a23b4ba1cd474381e894e7ffcbb56607a23b4ba1cd474381e894e7ffcbb566 # 64 bytes
+    secret-key: ${JWT_SECRET:07a23b4ba1cd474381e894e7ffcbb56607a23b4ba1cd474381e894e7ffcbb566}
     expiration-time: 3600000 # 1 hour
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info,metrics,prometheus"
+  endpoint:
+    health:
+      show-details: always
+    prometheus:
+      enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true
