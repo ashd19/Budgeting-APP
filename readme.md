@@ -1,6 +1,6 @@
 # 💰 Budgeting App
 
-A full-stack personal finance tracker built with **Spring Boot**  **Next.js** and **Flutter**.
+A full-stack personal finance tracker built with **Spring Boot**  **Next.js** .
 
 ## 🚀 Tech Stack
 
